@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Progress Steps Ribbon — EaseMotion CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="page-header">
+    <h1>Progress Steps Ribbon</h1>
+    <p>Click each step to activate — pure CSS, no JavaScript</p>
+  </header>
+
+  <main class="demo-wrapper">
+
+    <!-- Stepper using radio inputs -->
+    <div class="ribbon-stepper">
+
+      <input type="radio" name="step" id="step1" class="step-input" checked />
+      <input type="radio" name="step" id="step2" class="step-input" />
+      <input type="radio" name="step" id="step3" class="step-input" />
+      <input type="radio" name="step" id="step4" class="step-input" />
+
+      <!-- Step nodes -->
+      <div class="ribbon-track">
+
+        <label for="step1" class="step-node" data-step="1">
+          <span class="node-circle">1</span>
+          <span class="node-label">Account</span>
+        </label>
+
+        <div class="connector"></div>
+
+        <label for="step2" class="step-node" data-step="2">
+          <span class="node-circle">2</span>
+          <span class="node-label">Profile</span>
+        </label>
+
+        <div class="connector"></div>
+
+        <label for="step3" class="step-node" data-step="3">
+          <span class="node-circle">3</span>
+          <span class="node-label">Preferences</span>
+        </label>
+
+        <div class="connector"></div>
+
+        <label for="step4" class="step-node" data-step="4">
+          <span class="node-circle">4</span>
+          <span class="node-label">Launch</span>
+        </label>
+
+      </div>
+
+      <!-- Step content panels -->
+      <div class="step-panels">
+
+        <div class="step-panel" id="panel1">
+          <h2>&#128100; Create Your Account</h2>
+          <p>Set up your credentials and get started with your new account.</p>
+        </div>
+
+        <div class="step-panel" id="panel2">
+          <h2>&#9998; Build Your Profile</h2>
+          <p>Add your name, photo, and details to personalize your experience.</p>
+        </div>
+
+        <div class="step-panel" id="panel3">
+          <h2>&#9881; Set Preferences</h2>
+          <p>Choose your notification settings, theme, and language options.</p>
+        </div>
+
+        <div class="step-panel" id="panel4">
+          <h2>&#127880; You're All Set!</h2>
+          <p>Your setup is complete. Welcome aboard — let's get started!</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
