@@ -1,0 +1,216 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ease-speed: 1s;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #0a0e1a;
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+/* Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.page-header p {
+  color: rgba(226, 232, 240, 0.45);
+  font-size: 1rem;
+}
+
+/* Speed control */
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 560px;
+  margin: 0 auto 48px;
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px 20px;
+}
+
+.speed-control-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.6);
+  white-space: nowrap;
+}
+
+.speed-hint {
+  font-size: 0.75rem;
+  color: rgba(226, 232, 240, 0.35);
+  white-space: nowrap;
+}
+
+#speedSlider {
+  flex: 1;
+  accent-color: #3b82f6;
+  cursor: pointer;
+  height: 4px;
+}
+
+.speed-badge {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: #fff;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  min-width: 44px;
+  text-align: center;
+}
+
+/* Demo grid */
+.demo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* Demo card */
+.demo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.demo-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Animation box */
+.anim-box {
+  width: 110px;
+  height: 110px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #1e293b, #334155);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Animations controlled by --ease-speed */
+.ease-fade-in-box {
+  animation: ease-fade-in var(--ease-speed) ease forwards infinite;
+}
+
+.ease-slide-up-box {
+  animation: ease-slide-up var(--ease-speed) ease forwards infinite;
+}
+
+.ease-zoom-in-box {
+  animation: ease-zoom-in var(--ease-speed) ease forwards infinite;
+}
+
+.ease-bounce-box {
+  animation: ease-bounce var(--ease-speed) ease infinite;
+}
+
+.ease-spin-box {
+  animation: ease-spin var(--ease-speed) linear infinite;
+}
+
+.ease-pulse-box {
+  animation: ease-pulse var(--ease-speed) ease-in-out infinite;
+}
+
+/* Keyframes */
+@keyframes ease-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes ease-slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ease-zoom-in {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ease-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-16px); }
+}
+
+@keyframes ease-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes ease-pulse {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%       { transform: scale(1.1); opacity: 0.7; }
+}
+
+/* Replay button */
+.replay-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.replay-btn {
+  padding: 12px 28px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.replay-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .speed-control { flex-wrap: wrap; }
+  .page-header h1 { font-size: 1.5rem; }
+  .anim-box { width: 90px; height: 90px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .anim-box { animation: none !important; opacity: 1; transform: none; }
+  .replay-btn { transition: none; }
+}

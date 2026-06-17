@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animation Speed Control Slider — EaseMotion CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="page-header">
+    <h1>Animation Speed Control</h1>
+    <p>Drag the slider to control animation playback speed in real time</p>
+  </header>
+
+  <!-- Speed Control -->
+  <div class="speed-control">
+    <label class="speed-control-label" for="speedSlider">Speed</label>
+    <span class="speed-hint">Slow</span>
+    <input type="range" id="speedSlider" min="0.25" max="3" step="0.25" value="1" />
+    <span class="speed-hint">Fast</span>
+    <span class="speed-badge" id="speedLabel">1x</span>
+  </div>
+
+  <!-- Animation demos -->
+  <main class="demo-grid">
+
+    <div class="demo-card">
+      <div class="anim-box ease-fade-in-box">Fade In</div>
+      <span class="demo-label">ease-fade-in</span>
+    </div>
+
+    <div class="demo-card">
+      <div class="anim-box ease-slide-up-box">Slide Up</div>
+      <span class="demo-label">ease-slide-up</span>
+    </div>
+
+    <div class="demo-card">
+      <div class="anim-box ease-zoom-in-box">Zoom In</div>
+      <span class="demo-label">ease-zoom-in</span>
+    </div>
+
+    <div class="demo-card">
+      <div class="anim-box ease-bounce-box">Bounce</div>
+      <span class="demo-label">ease-bounce</span>
+    </div>
+
+    <div class="demo-card">
+      <div class="anim-box ease-spin-box">Spin</div>
+      <span class="demo-label">ease-spin</span>
+    </div>
+
+    <div class="demo-card">
+      <div class="anim-box ease-pulse-box">Pulse</div>
+      <span class="demo-label">ease-pulse</span>
+    </div>
+
+  </main>
+
+  <div class="replay-wrapper">
+    <button class="replay-btn" id="replayBtn">&#8635; Replay Animations</button>
+  </div>
+
+  <script>
+    const slider = document.getElementById('speedSlider');
+    const label  = document.getElementById('speedLabel');
+    const boxes  = document.querySelectorAll('.anim-box');
+
+    function applySpeed(speed) {
+      document.documentElement.style.setProperty('--ease-speed', `${speed}s`);
+      label.textContent = `${speed}x`;
+    }
+
+    slider.addEventListener('input', () => {
+      applySpeed(parseFloat(slider.value));
+    });
+
+    document.getElementById('replayBtn').addEventListener('click', () => {
+      boxes.forEach(box => {
+        box.style.animation = 'none';
+        box.offsetHeight; // reflow
+        box.style.animation = '';
+      });
+    });
+
+    applySpeed(1);
+  </script>
+
+</body>
+</html>
